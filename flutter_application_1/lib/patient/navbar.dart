@@ -12,7 +12,7 @@ import 'package:flutter_application_1/patient/subject.dart';
 import 'package:flutter_application_1/reservations/resrvations.dart';
 
 import 'QRcode.dart';
-import 'alerts.dart';
+//import 'alerts.dart';
 import 'calender.dart';
 import 'chat2.dart';
 

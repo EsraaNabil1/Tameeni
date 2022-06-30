@@ -134,7 +134,7 @@ class _chatState extends State<chat> {
                       );
                     },
                     child: Container(color:x==true? Colors.teal.shade50:Colors.transparent,
-                        child: chat1("3",x==true?Color.fromRGBO(6, 187, 192, 10):Colors.transparent)),
+                        child: chat1("2",x==true?Color.fromRGBO(6, 187, 192, 10):Colors.transparent)),
                   ),
                  
 

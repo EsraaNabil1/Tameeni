@@ -279,7 +279,7 @@ Widget pacti(String text, col, col2) => Padding(
     );
 
 Widget calen1(String text, clo, ico) => Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
       child: Container(
         decoration: BoxDecoration(boxShadow: const [
           BoxShadow(
@@ -610,17 +610,17 @@ Widget date2() => Padding(
       ),
     );
 Widget chat1(tt, cll) => Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 3),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Column(
             children: [
-              Text(
-                "02:51م",
-                style:
-                    TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
-              ),
+              // Text(
+              //   "02:51م",
+              //   style:
+              //       TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+              // ),
               CircleAvatar(
                 radius: 14,
                 backgroundColor: cll,
@@ -651,12 +651,12 @@ Widget chat1(tt, cll) => Padding(
             ],
           ),
           Container(
-            width: 70,
+            width: 65,
 
             height: 70,
 
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
+                borderRadius: BorderRadius.circular(50),
                 image: DecorationImage(
                     image: AssetImage("assets/45.jpg"), fit: BoxFit.cover)),
 

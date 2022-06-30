@@ -1,3 +1,5 @@
+
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -5,11 +7,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final _firestore = FirebaseFirestore.instance;
+
+  
 class DetailChat extends StatefulWidget {
   const DetailChat({Key? key}) : super(key: key);
-@override
-_DetailChatState createState() => _DetailChatState();
+
+  @override
+  _DetailChatState createState() => _DetailChatState();
 }
+
 class _DetailChatState extends State<DetailChat> {
   final messageTextController = TextEditingController();
   final _auth = FirebaseAuth.instance;
@@ -25,6 +31,7 @@ class _DetailChatState extends State<DetailChat> {
     });
   }
 
+ 
 void messagesStreams() async {
 await for(var snapshot in  _firestore.collection('messages').snapshots()){
   for (var message in snapshot.docs){
@@ -89,10 +96,12 @@ await for(var snapshot in  _firestore.collection('messages').snapshots()){
         elevation: 0,
        ),
       body: SafeArea(
+        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            
             const MessageStreamBuilder(),
             Container(
               decoration: const BoxDecoration(
@@ -100,9 +109,11 @@ await for(var snapshot in  _firestore.collection('messages').snapshots()){
                   top: BorderSide(
                     color:  Color.fromRGBO(6, 187, 192, 1),
                     width: 2,
+          
                   ),
                 ),
               ),
+              
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -142,7 +153,8 @@ await for(var snapshot in  _firestore.collection('messages').snapshots()){
                 ],
               ),
           
-            ),       
+            ),
+            
           ],
         ),
       ),
@@ -150,27 +162,30 @@ await for(var snapshot in  _firestore.collection('messages').snapshots()){
   }
 }
 class MessageStreamBuilder extends StatelessWidget {
-const MessageStreamBuilder({ Key? key }) : super(key: key);
+  const MessageStreamBuilder({ Key? key }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-    stream: _firestore.collection('messages').orderBy('time').snapshots(),
-    builder:(context , snapshot) {
-    List<MessageLine> messageWidgets = [];
-    if (!snapshot.hasData){
-    return const Padding(
-    padding:  EdgeInsets.only(top: 10.0),
-    child: Center(
-    child:  CircularProgressIndicator(
-    backgroundColor: Color.fromRGBO(6, 187, 192, 1),),
-    ),
-     );
-      }
-    final messages = snapshot.data!.docs.reversed;
-          for (var message in messages) {
-              final messageText = message.get('text');
-              final messageWidget = MessageLine(text: messageText); 
+            stream: _firestore.collection('messages').orderBy('time').snapshots(),
+            builder:(context , snapshot) {
+              List<MessageLine> messageWidgets = [];
 
+              if (!snapshot.hasData){
+               return const Padding(
+                 padding:  EdgeInsets.only(top: 10.0),
+                 child: Center(
+                  child:  CircularProgressIndicator(
+                    backgroundColor: Color.fromRGBO(6, 187, 192, 1),),
+                       ),
+               );
+              }
+              
+              final messages = snapshot.data!.docs.reversed;
+              for (var message in messages) {
+                final messageText = message.get('text');
+                final messageWidget = MessageLine(text: messageText); 
+                
                 messageWidgets.add(messageWidget);
               }
               return Expanded(
